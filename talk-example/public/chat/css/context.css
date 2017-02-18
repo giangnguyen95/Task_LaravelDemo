@@ -1,0 +1,9 @@
+div.image-list{
+	border-top-right-radius: 5px;
+  	border-bottom-right-radius: 5px;
+	background: red;
+    width: 250px;
+    float: right;
+    height: inherit;
+    padding: 20px 10px;
+}

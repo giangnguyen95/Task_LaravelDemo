@@ -2,28 +2,34 @@
 <html >
   <head>
     <meta charset="UTF-8">
-      <meta name="csrf-token" content="{{csrf_token()}}">
+    <meta name="csrf-token" content="{{csrf_token()}}">
     <title>Talk Message</title>
-    
-    
     <link rel="stylesheet" href="{{asset('chat/css/reset.css')}}">
-
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
-
-        <link rel="stylesheet" href="{{asset('chat/css/style.css')}}">
-
-    
-    
-    
+    <link rel="stylesheet" href="{{asset('chat/css/style.css')}}"> 
+    <link rel="stylesheet" type="text/css" href="{{asset('chat/css/context.css')}}">
   </head>
 
-  <body>
+<body>
 <div class="header">
     <div class="container header-brand">
         <a href="{{url('/home')}}" class="brand">Talk Message</a>
+        <ul class="header-right">
+          <li>
+              <a href="{{ url('/logout') }}"
+                  onclick="event.preventDefault();
+                           document.getElementById('logout-form').submit();">
+                  Logout <i class="fa fa-sign-out" aria-hidden="true"></i>
+              </a>
+
+              <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                  {{ csrf_field() }}
+              </form>
+          </li>
+        </ul>
     </div>
 </div>
-      <div class="container clearfix body">
+<div class="container clearfix body">
    @include('partials.peoplelist')
     
     <div class="chat">
@@ -44,29 +50,25 @@
       @yield('content')
       
       <div class="chat-message clearfix">
-      <form action="" method="post" id="talkSendMessage">
-            <textarea name="message-data" id="message-data" placeholder ="Type your message" rows="3"></textarea>
-            <input type="hidden" name="_id" value="{{@request()->route('id')}}">
-            <button type="submit">Send</button>
-      </form>
-
+        <form action="" method="post" id="talkSendMessage">
+          <textarea name="message-data" id="message-data" placeholder ="Type your message" rows="3"></textarea>
+          <input type="hidden" name="_id" value="{{@request()->route('id')}}">
+          <button type="submit">Send</button>
+        </form>
       </div> <!-- end chat-message -->
       
     </div> <!-- end chat -->
     
-  </div> <!-- end container -->
+    @include('context.images')
+</div> <!-- end container -->
 
-
-      <script>
-          var __baseUrl = "{{url('/')}}"
-      </script>
-    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script>
+  var __baseUrl = "{{url('/')}}"
+</script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js'></script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js'></script>
-
-
-
-        <script src="{{asset('chat/js/talk.js')}}"></script>
+<script src="{{asset('chat/js/talk.js')}}"></script>
 
     <script>
         var show = function(data) {

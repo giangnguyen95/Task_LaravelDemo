@@ -90,6 +90,7 @@
                         This is a demo project for Talk. So lets start your journey.
                     </p>
                     <a href="{{url('/register')}}" class="">Registration</a>
+                    <a href="{{url('/login')}}">Login</a>
                 </div>
             </div>
         </div>
