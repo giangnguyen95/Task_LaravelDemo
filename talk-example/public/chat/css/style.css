@@ -154,7 +154,7 @@ div.chat-about{
 }
 
 .chat .chat-history .message-data {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 .chat .chat-history .message-data-time {
   color: #a8aab1;
@@ -162,13 +162,14 @@ div.chat-about{
 }
 .chat .chat-history .message {
   color: white;
-  padding: 18px 20px;
+  padding: 10px 20px;
   line-height: 26px;
   font-size: 16px;
-  border-radius: 7px;
-  margin-bottom: 30px;
-  width: 90%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  width: 60%;
   position: relative;
+  text-align: justify;
 }
 .chat .chat-history .message:after {
   bottom: 100%;
@@ -184,8 +185,8 @@ div.chat-about{
   margin-left: -10px;
 }
 .chat .chat-history .my-message {
-  background-color: rgba(0, 0, 0, .1);
-  color: #555;
+  background-color: rgba(0, 0, 0, .4);
+  color: #fff;
 }
 .chat .chat-history .other-message {
   background-color: rgba(0, 0, 255, .4);
@@ -217,7 +218,6 @@ div.chat-about{
   padding: 10px 20px;
   font: 14px/22px "Lato", Arial, sans-serif;
   margin-bottom: 10px;
-  border-radius: 5px;
   resize: none;
 }
 .chat .chat-message .fa-file-o, .chat .chat-message .fa-file-image-o {

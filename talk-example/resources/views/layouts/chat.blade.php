@@ -69,6 +69,7 @@
 <script src='http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js'></script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js'></script>
 <script src="{{asset('chat/js/talk.js')}}"></script>
+<script type="text/javascript" src="{{asset('chat/js/context.js')}}"></script>
 
     <script>
         var show = function(data) {

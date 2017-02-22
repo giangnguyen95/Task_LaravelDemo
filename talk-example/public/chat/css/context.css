@@ -1,8 +1,42 @@
-div.image-list{
-	padding: 20px 10px;
+div.context{
     width: 20%;
     height: 100%;
     float: left;
+}
 
-    background: red;
+div.context .title{
+	height: 60px
+}
+
+div.context .title h4{
+	padding-top: 20px;
+	font-size: 12pt;
+	text-align: center;
+}
+
+div.context ul{
+	height: calc(100% - 60px);
+	padding: 20px 10px;
+	list-style: none;
+	text-align: center;
+	overflow-y: scroll;
+}
+div.context ul::-webkit-scrollbar{
+	width: 7px;
+}
+div.context ul::-webkit-scrollbar-thumb{
+	background-color: #ddd;
+}
+
+div.context ul li{
+	display: block;
+	margin-bottom: 10px;
+}
+
+div.context ul a{
+	display: block;
+}
+
+div.context ul a img{
+	width: 70%;
 }
