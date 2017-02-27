@@ -185,7 +185,7 @@ div.chat-about{
   margin-left: -10px;
 }
 .chat .chat-history .my-message {
-  background-color: rgba(0, 0, 0, .4);
+  background-color: rgba(0, 0, 0, .2);
   color: #fff;
 }
 .chat .chat-history .other-message {
