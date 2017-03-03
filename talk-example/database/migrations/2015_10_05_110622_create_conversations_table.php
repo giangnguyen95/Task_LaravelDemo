@@ -17,6 +17,7 @@ class CreateConversationsTable extends Migration
             $tbl->integer('user_one');
             $tbl->integer('user_two');
             $tbl->boolean('status');
+            $tbl->string('background')->nullable();
             $tbl->timestamps();
 
         });

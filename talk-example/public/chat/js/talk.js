@@ -16,7 +16,7 @@ $(document).ready(function () {
         request = $.ajax({
             method: "post",
             url: url,
-            data: data
+            data: data,
         });
 
         request.done(function (response) {
