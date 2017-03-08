@@ -27,14 +27,22 @@ class MessageController extends Controller
         $conversations = Talk::getMessagesByUserId($id);
         $user = '';
         $messages = [];
+        $conversation = [];
+        $cvId = 0;
         if(!$conversations) {
             $user = User::find($id);
         } else {
             $user = $conversations->withUser;
             $messages = $conversations->messages;
+            /* lấy conversation_id từ messages */
+            foreach ($messages as $message) {
+            	$cvId = $message['conversation_id'];
+            	$conversation = Talk::getConversationById($cvId);
+
+            }
         }
 
-        return view('messages.conversations', compact('messages', 'user', 'conversations'));
+        return view('messages.conversations', compact('messages', 'user', 'conversations', 'conversation'));
     }
 
     public function updateConversation(Request $request)
