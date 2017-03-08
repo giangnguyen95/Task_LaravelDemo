@@ -1,11 +1,12 @@
 @extends('layouts.chat')
 
 @section('content')
-    <div class="chat-history">
+@foreach($messages as $message)
+    <div class="chat-history"
+    	style="background-image: url({{$message->conversation->background}});">
         <ul id="talkMessages">
-
-            @foreach($messages as $message)
                 @if($message->sender->id == auth()->user()->id)
+                    <!-- {{var_dump($message->conversation->background)}} -->
                     <li class="clearfix" id="message-{{$message->id}}">
                         <div class="message-data align-right">
                             <span class="message-data-time" >{{$message->humans_time}} ago</span> &nbsp; &nbsp;
@@ -28,11 +29,11 @@
                         </div>
                     </li>
                 @endif
-            @endforeach
 
 
         </ul>
 
     </div> <!-- end chat-history -->
+@endforeach
 
 @endsection

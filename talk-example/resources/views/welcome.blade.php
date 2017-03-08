@@ -89,8 +89,10 @@
                     <p>
                         This is a demo project for Talk. So lets start your journey.
                     </p>
-                    <a href="{{url('/register')}}" class="">Registration</a>
-                    <a href="{{url('/login')}}">Login</a>
+                    @if (!Auth::check())
+                        <a href="{{url('/register')}}" class="">Registration</a>
+                        <a href="{{url('/login')}}">Login</a>
+                    @endif
                 </div>
             </div>
         </div>

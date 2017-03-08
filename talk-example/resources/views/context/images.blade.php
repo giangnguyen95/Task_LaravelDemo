@@ -1,3 +1,4 @@
+@foreach($messages as $message)
 <div class="context">
 	<div class="title">
 		<h4>
@@ -6,6 +7,8 @@
 		</h4>
 	</div>
 	<form id="form-bg">
+		<!-- <input type="hidden" name="_id" value="{{@request()->route('id')}}"> -->
+		<input type="hidden" name="_cv" id ="cv_id" value="{{$message->conversation_id}}">
 		<ul class="list_img">
 			<li>
 				<a class="background_img" href="#">
@@ -30,3 +33,4 @@
 		</ul>
 	</form>
 </div>
+@endforeach

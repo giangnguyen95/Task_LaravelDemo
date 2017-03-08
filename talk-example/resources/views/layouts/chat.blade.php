@@ -2,11 +2,11 @@
 <html >
   <head>
     <meta charset="UTF-8">
-    <meta name="csrf-token" content="{{csrf_token()}}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Talk Message</title>
     <link rel="stylesheet" href="{{asset('chat/css/reset.css')}}">
     <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
-    <link rel="stylesheet" href="{{asset('chat/css/style.css')}}"> 
+    <link rel="stylesheet" href="{{asset('chat/css/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('chat/css/context.css')}}">
   </head>
 
@@ -31,7 +31,7 @@
 </div>
 <div class="container clearfix body">
    @include('partials.peoplelist')
-    
+
     <div class="chat">
       <div class="chat-header clearfix">
         @if(isset($user))
@@ -46,9 +46,9 @@
         </div>
         <i class="fa fa-star"></i>
       </div> <!-- end chat-header -->
-      
+
       @yield('content')
-      
+
       <div class="chat-message clearfix">
         <form action="" method="post" id="talkSendMessage">
           <textarea name="message-data" id="message-data" placeholder ="Type your message" rows="3"></textarea>
@@ -56,9 +56,9 @@
           <button type="submit">Send</button>
         </form>
       </div> <!-- end chat-message -->
-      
+
     </div> <!-- end chat -->
-    
+
     @include('context.images')
 </div> <!-- end container -->
 
@@ -91,6 +91,6 @@
         }
 
     </script>
-    
+
   </body>
 </html>

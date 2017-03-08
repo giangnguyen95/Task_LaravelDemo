@@ -34,7 +34,38 @@ class MessageController extends Controller
             $messages = $conversations->messages;
         }
 
-        return view('messages.conversations', compact('messages', 'user'));
+        return view('messages.conversations', compact('messages', 'user', 'conversations'));
+    }
+
+    public function updateConversation(Request $request)
+    {
+        if ($request->ajax()) {
+        	$bg = $request->bg;
+        	$cvId = $request->data;
+        	$val = $bg . ' ' . $cvId;
+        	if ($conversation = Talk::updateConversation($cvId, $bg)) {
+        		$response = array(
+        				'status'=>$conversation->background,
+        				'msg'=>'successfully',
+        		);
+//         		return view('messages.conversations', compact('conversation'));
+        		return response()->json(['status'=>'successfully '.$conversation->background]);
+        	}
+
+
+        	/* $background = $request->bg;
+        	$cvId = $request->data; */
+
+//         	$html = view(messages.conversations, compact('abc'));
+//         	die();
+//         	$background = $_POST['bg'];
+//         	$cvId = $request->input('_cv');
+
+//         	if ($conversation = Talk::updateConversation($cvId, $background)) {
+//         		$html = view(messages.conversations, compact('abc'));
+//         	}
+        }
+        return response()->json(['error' => 'error']);
     }
 
     public function ajaxSendMessage(Request $request)
