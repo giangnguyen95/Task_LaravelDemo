@@ -59,19 +59,6 @@ class MessageController extends Controller
 //         		return view('messages.conversations', compact('conversation'));
         		return response()->json(['status'=>'successfully '.$conversation->background]);
         	}
-
-
-        	/* $background = $request->bg;
-        	$cvId = $request->data; */
-
-//         	$html = view(messages.conversations, compact('abc'));
-//         	die();
-//         	$background = $_POST['bg'];
-//         	$cvId = $request->input('_cv');
-
-//         	if ($conversation = Talk::updateConversation($cvId, $background)) {
-//         		$html = view(messages.conversations, compact('abc'));
-//         	}
         }
         return response()->json(['error' => 'error']);
     }

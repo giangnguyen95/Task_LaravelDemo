@@ -29,74 +29,51 @@ $(document).ready(function () {
     });
     
     $("a img").on('click', function (e) {
+        var img = $(this).attr('src');
+        $(".chat-history").hide().css('background', 'url(' + img + ')');
 
-      var img = $(this).attr('src');
-      $(".chat-history").hide().css('background', 'url(' + img + ')');
+        var $img = $("<img>").attr('src', img).one('load', function () {
+          $(".chat-history").fadeIn();
+        });
+          
+        if ($img.get(0).complete) {
+          $(".chat-history").fadeIn(2000);
+        }
 
-      var $img = $("<img>").attr('src', img).one('load', function () {
-        $(".chat-history").fadeIn();
-      });
+        nameImg = img.split("/")[img.split("/").length-1];
         
-      if ($img.get(0).complete) {
-        $(".chat-history").fadeIn(2000);
-      }
+        /* xét giá trị truyền vào ajax: id, name_background, url, method*/
+        e.preventDefault();
+        var url, request, data;
+        url = __baseUrl + '/ajax/conversation';
+        data = $("#cv_id").val();
+        console.log(data + " " + nameImg + " " + url + " " + img);
+        
+        /* xử lý ajax submit form*/
+        request = $.ajax({
+          url: url,
+          method: "post",
+          beforeSend: function (xhr) {
+            var token = $('meta[name="csrf_token"]').attr('content');
 
-      // Get file name from src
-      /*String.prototype.filename=function(extension){
-          var s= this.replace(/\\/g, '/');
-          s= s.substring(s.lastIndexOf('/')+ 1);
-          return extension? s.replace(/[?#].+$/, ''): s.split('.')[0];
-      }
-      nameImg = img.filename() + '.gif'; // Name image
-  */    
-      nameImg = img.split("/")[img.split("/").length-1];
-      
-      /* xét giá trị truyền vào ajax: id, name_background, url, method*/
-      e.preventDefault();
-      var url, request, data;
-      
-      url = __baseUrl + '/ajax/conversation';
-      data = $("#cv_id").val();
-      /*tag = $("#form-bg");
-      data = tag.serialize();*/
-      
-      console.log(data + " " + nameImg + " " + url + " " + img);
-      
-      /* xử lý ajax submit form*/
-      request = $.ajax({
-        url: url,
-        method: "post",
-        beforeSend: function (xhr) {
-          var token = $('meta[name="csrf_token"]').attr('content');
-
-          if (token) {
-                return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            if (token) {
+                  return xhr.setRequestHeader('X-CSRF-TOKEN', token);
+            }
+          },
+          /*dataType: 'JSON',*/
+          data: {data: data, bg: img},
+        });
+        
+        request.done(function (response) {
+          alert(response.status + " " + response.msg);
+          if (response.status == 'success') {
+            alert();
           }
-        },
-        /*dataType: 'JSON',*/
-        data: {data: data, bg: img},
-        /*data: { testdata : 'testdatacontent' },*/
-      });
-      
-      request.done(function (response) {
-        alert(response.status + " " + response.msg);
-        if (response.status == 'success') {
-          alert();
-        }
-      });
-      
-      request.fail(function (response) {
-        console.log(response);
-      });
-      /*$.ajax({
-        type: "GET",
-        url: "...",
-        data: "{imgName : nameImg}";
-        success: function(data) {
-
-        }
-      });*/
-
+        });
+        
+        request.fail(function (response) {
+          console.log(response);
+        });
     });
 
 
