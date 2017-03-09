@@ -67,8 +67,15 @@ body {
     float: left;
 }
 .people-list .search {
-  padding: 20px;
+  height: 60px;
 }
+.people-list .search a{
+  padding-top: 20px;
+  font-size: 12pt;
+  text-align: center;
+  display: block;
+}
+
 .people-list input {
   border-radius: 3px;
   border: none;
@@ -83,9 +90,20 @@ body {
   left: -25px;
 }
 .people-list ul {
+  height: calc(100% - 60px);
   padding: 20px 10px;
-  height: 770px;
+  list-style: none;
+  text-align: center;
+  overflow-y: scroll;
 }
+
+.people-list ul::-webkit-scrollbar{
+  width: 7px;
+}
+.people-list ul::-webkit-scrollbar-thumb{
+  background-color: #ddd;
+}
+
 .people-list ul li {
   padding-bottom: 20px;
 }

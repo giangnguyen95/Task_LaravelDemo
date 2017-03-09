@@ -1,12 +1,14 @@
 @extends('layouts.chat')
 
 @section('content')
-    <div class="chat-history"
-    style="background-image: url({{$conversation->background}});">
-    <!--  -->
+
+@if($conversation == array())
+    <div class="chat-history">
+@else
+    <div class="chat-history" style="background-image: url({{$conversation->background}});">
+@endif
         <ul id="talkMessages">
             @foreach($messages as $message)
-            	<!-- {{$messages}} -->
                 @if($message->sender->id == auth()->user()->id)
                     <!-- {{var_dump($message->conversation->background)}} -->
                     <li class="clearfix" id="message-{{$message->id}}">

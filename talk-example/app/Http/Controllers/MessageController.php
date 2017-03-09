@@ -34,15 +34,12 @@ class MessageController extends Controller
         } else {
             $user = $conversations->withUser;
             $messages = $conversations->messages;
-            /* lấy conversation_id từ messages */
-            foreach ($messages as $message) {
-            	$cvId = $message['conversation_id'];
-            	$conversation = Talk::getConversationById($cvId);
 
-            }
+            $cvId = $conversations->id;
+            $conversation = Talk::getConversationById($cvId);
         }
 
-        return view('messages.conversations', compact('messages', 'user', 'conversations', 'conversation'));
+        return view('messages.conversations', compact('id','messages', 'user', 'conversations', 'conversation'));
     }
 
     public function updateConversation(Request $request)
@@ -56,7 +53,6 @@ class MessageController extends Controller
         				'status'=>$conversation->background,
         				'msg'=>'successfully',
         		);
-//         		return view('messages.conversations', compact('conversation'));
         		return response()->json(['status'=>'successfully '.$conversation->background]);
         	}
         }
