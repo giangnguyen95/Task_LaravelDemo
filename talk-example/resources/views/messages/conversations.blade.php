@@ -5,6 +5,7 @@
 @if($conversation == array())
     <div class="chat-history">
 @else
+<!-- 	{{$conversations->id}} {{$conversations->withUser}} {{$conversations->messages}} {{$conversations->user}} -->
     <div class="chat-history" style="background-image: url({{$conversation->background}});">
 @endif
         <ul id="talkMessages">

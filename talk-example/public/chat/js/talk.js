@@ -28,7 +28,7 @@ $(document).ready(function () {
 
     });
     
-    $("a img").on('click', function (e) {
+    $(".background_img img").on('click', function (e) {
         var img = $(this).attr('src');
         $(".chat-history").hide().css('background', 'url(' + img + ')');
 

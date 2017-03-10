@@ -7,7 +7,9 @@
 	</div>
 	<form id="form-bg">
 		<!-- <input type="hidden" name="_id" value="{{@request()->route('id')}}"> -->
+		@if($conversations != null)
 		<input type="hidden" name="_cv" id ="cv_id" value="{{$conversations->id}}">
+		@endif
 		<ul class="list_img">
 			<li>
 				<a class="background_img" href="#">
