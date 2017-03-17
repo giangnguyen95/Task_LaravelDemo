@@ -5,14 +5,14 @@
 @if($conversation == array())
     <div class="chat-history">
 @else
-<!-- 	{{$conversations->id}} {{$conversations->withUser}} {{$conversations->messages}} {{$conversations->user}} -->
+<!--    {{$conversations->id}} {{$conversations->withUser}} {{$conversations->messages}} {{$conversations->user}} -->
     <div class="chat-history" style="background-image: url({{$conversation->background}});">
 @endif
         <ul id="talkMessages">
             @foreach($messages as $message)
                 @if($message->sender->id == auth()->user()->id)
                     <!-- {{var_dump($message->conversation->background)}} -->
-                    <li class="clearfix" id="message-{{$message->id}}">
+                    <li class="clearfix other" id="message-{{$message->id}}" style="z-index: {{$message->id}}">
                         <div class="message-data align-right">
                             <span class="message-data-time" >{{$message->humans_time}} ago</span> &nbsp; &nbsp;
                             <span class="message-data-name" >{{$message->sender->name}}</span>
@@ -24,7 +24,7 @@
                     </li>
                 @else
 
-                    <li id="message-{{$message->id}}">
+                    <li class="my" id="message-{{$message->id}}" style="z-index: {{$message->id}}">
                         <div class="message-data">
                             <span class="message-data-name"> <a href="#" class="talkDeleteMessage" data-message-id="{{$message->id}}" title="Delete Messag"><i class="fa fa-close" style="margin-right: 3px;"></i></a>{{$message->sender->name}}</span>
                             <span class="message-data-time">{{$message->humans_time}} ago</span>

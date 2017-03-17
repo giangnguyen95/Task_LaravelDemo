@@ -171,24 +171,63 @@ div.chat-about{
   background-color: rgba(0,0,0,.5);
 }
 
+.chat .chat-history ul{
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.chat .chat-history ul li{
+  position: absolute;
+}
+
+.chat .chat-history ul li.my{
+  top: 0;
+  left:0;
+  width: 50%;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.chat .chat-history ul li.my .message-data{}
+
+.chat .chat-history ul li.other{
+  top: 0;
+  right: 0;
+  width: 45%;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+
+
 .chat .chat-history .message-data {
-  margin-bottom: 10px;
+  padding: 10px 10px;
 }
 .chat .chat-history .message-data-time {
   color: #a8aab1;
   padding-left: 6px;
 }
 .chat .chat-history .message {
-  color: white;
-  padding: 10px 20px;
-  line-height: 26px;
+  color: #000;
+  padding: 10px 30px;
+  line-height: 50px;
   font-size: 16px;
-  border-radius: 10px;
   margin-bottom: 15px;
-  width: 60%;
+  width: 100%;
   position: relative;
   text-align: justify;
 }
+
+.chat .chat-history .other-message{
+  
+}
+
+.chat .chat-history .my-message{
+  
+}
+
+
 .chat .chat-history .message:after {
   bottom: 100%;
   left: 7%;
@@ -203,11 +242,11 @@ div.chat-about{
   margin-left: -10px;
 }
 .chat .chat-history .my-message {
-  background-color: rgba(0, 0, 0, .2);
-  color: #fff;
+  background-color: rgb(255, 255, 255);
+  color: #000;
 }
 .chat .chat-history .other-message {
-  background-color: rgba(0, 0, 255, .4);
+  background-color: rgb(255, 255, 255);
 }
 .chat .chat-history .other-message:after {
   border-bottom-color: #94C2ED;
@@ -225,7 +264,7 @@ div.chat-about{
   height: 100%;
 }
 
-.chat .chat-message textarea {
+.chat .chat-message input#message-data {
   width: calc(100% - 90px);
   height: 70%;
   position: absolute;

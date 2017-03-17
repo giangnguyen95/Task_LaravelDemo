@@ -51,9 +51,10 @@
 
       <div class="chat-message clearfix">
         <form action="" method="post" id="talkSendMessage">
-          <textarea name="message-data" id="message-data" placeholder ="Type your message" rows="3"></textarea>
+          <!-- <textarea name="message-data" id="message-data" placeholder ="Type your message" rows="3"></textarea> -->
+          <input type="text" name="message-data" id="message-data" placeholder="Type your message">
           <input type="hidden" name="_id" value="{{@request()->route('id')}}">
-          <button type="submit">Send</button>
+          <button type="submit"><i class="fa fa-paper-plane fa-2x" aria-hidden="true"></i></button>
         </form>
       </div> <!-- end chat-message -->
 
@@ -70,6 +71,7 @@
 <script src='http://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js'></script>
 <script src="{{asset('chat/js/talk.js')}}"></script>
 <script type="text/javascript" src="{{asset('chat/js/context.js')}}"></script>
+<script src="https://use.fontawesome.com/5104b0e0cf.js"></script>
 
     <script>
         var show = function(data) {
